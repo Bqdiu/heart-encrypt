@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Heart Encrypt</title>
+    <link rel="stylesheet" href="./styles/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form">
+            <h2>Heart Encrypt </h2>
+            <div class="well">
+              <div class="form-group">
+                <textarea id="message" class="form-control" placeholder="Write message here"></textarea>
+              </div>
+              <button id="encrypt" class="btn btn-primary">Encrypt</button>
+            </div>
+            <div class="well">
+              <div class="form-group">
+                <textarea id="secret" class="form-control" placeholder="Paste message here"></textarea>
+              </div>
+              <button id="decrypt" class="btn btn-primary">Decrypt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/heart-encrypt.js"></script>
+    <script>
+document.getElementById('decrypt').onclick = function() {
+  decrypt(document.getElementById('secret').value, function(err, msg) {
+    if (err) { return; }
+    document.getElementById('secret').value = msg;
+  });
+};
+
+document.getElementById('encrypt').onclick = function() {
+  encrypt(document.getElementById('message').value, function(err, msg) {
+    if (err) { return; }
+    document.getElementById('message').value = msg;
+  });
+};
+    </script>
+  </body>
+</html>
